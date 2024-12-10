@@ -64,6 +64,10 @@
 		</dependencies>
 	</dependencyManagement>
 
+	<modules>
+		<module>discovery-service</module>
+	</modules>
+
 	<build>
 		<plugins>
 			<plugin>
