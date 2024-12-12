@@ -1,5 +1,5 @@
 server:
-  port: 8888
+  port: 8880
 
 spring:
   application:
@@ -8,5 +8,5 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/Pierredelavigne/config-server.git
+          uri: https://github.com/mohamedutopios/config-ynov-server.git
           default-label: main
