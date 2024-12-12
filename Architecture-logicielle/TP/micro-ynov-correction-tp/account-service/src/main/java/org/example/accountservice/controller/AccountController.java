@@ -1,6 +1,7 @@
 package org.example.accountservice.controller;
 
 
+import org.example.accountservice.dto.AccountDetailsDTO;
 import org.example.accountservice.entity.Account;
 import org.example.accountservice.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,15 +24,16 @@ public class AccountController {
     public Account getAccountById(@PathVariable Long id) {
         return accountService.getAccountById(id);
     }
-    @GetMapping("/{accountId}")  // This will return the account details along with the account balance and transactions
-    public AccountDTO getAccountWithDetails(@PathVariable Long accountId) {
-        return accountService.getAccountWithDetails(accountId);
-    }
-
 
     @PostMapping
     public Account createAccount(@RequestBody Account account) {
+        System.out.println(account.getName());
         return accountService.saveAccount(account);
+    }
+
+    @GetMapping("/{id}/details")
+    public AccountDetailsDTO getAccountDetails(@PathVariable Long id) {
+        return accountService.getAccountDetails(id);
     }
 
     @DeleteMapping("/{id}")
