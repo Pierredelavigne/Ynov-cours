@@ -7,11 +7,19 @@ import org.example.loansservice.rest.AccountServiceClient;
 import org.example.loansservice.service.LoanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import jakarta.transaction.Transactional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import java.beans.Transient;
 import java.util.List;
 
 @Service
 public class LoanServiceImpl implements LoanService {
+
+    private static final Logger logger = LoggerFactory.getLogger(LoanServiceImpl.class);
 
     @Autowired
     private LoanRepository loanRepository;
@@ -42,5 +50,11 @@ public class LoanServiceImpl implements LoanService {
     public void deleteLoan(Long id) {
         loanRepository.deleteById(id);
     }
-}
 
+    
+    @Transactional
+    public void deleteLoanByAccountId(Long accountId) {
+        logger.info("Deleting loan by account id {}", accountId);
+        loanRepository.deleteByAccountId(accountId);
+    }
+}
