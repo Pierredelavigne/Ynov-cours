@@ -1,5 +1,6 @@
 package org.example.cardservice.service.impl;
 
+import jakarta.transaction.Transactional;
 import org.example.cardservice.entity.Card;
 import org.example.cardservice.repository.CardRepository;
 import org.example.cardservice.rest.AccountServiceClient;
@@ -9,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.beans.Transient;
 import java.util.List;
 
 @Service
@@ -47,6 +49,7 @@ public class CardServiceImpl implements CardService {
     }
 
     @Override
+    @Transactional
     public void deleteCardByAccountId(Long accountId) {
         logger.info("Deleting card by account id {}", accountId);
         cardRepository.deleteByAccountId(accountId);
